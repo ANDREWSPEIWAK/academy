@@ -1,0 +1,14 @@
+services:
+  barista-os:
+    build: .
+    image: barista-os:latest
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    environment:
+      # set to your domain in production, e.g. https://academy.example.com
+      ALLOW_ORIGIN: "*"
+      PORT: "8787"
+    volumes:
+      # progress.json lives here — back this folder up, it is the whole database
+      - ./data:/data
